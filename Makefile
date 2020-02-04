@@ -27,9 +27,9 @@
 
 # Macro for T2G_TF2GAP8 code generation
 
-ifndef GAP_TF2GAP_PATH
-    $(error run 'source sourceme.sh' in gap_sdk first)
-endif
+# ifndef GAP_TF2GAP_PATH
+#     $(error run 'source sourceme.sh' in gap_sdk first)
+# endif
 
 LN?= ln -s
 CLONE?=git clone
@@ -60,8 +60,10 @@ TF2GAP8_FROM_BUILD=../tf2gap8
 TF2GAP8_BUILD=$(TENSORFLOW_BUILD)/$(TF2GAP8)
 TENSORFLOW_REPO=https://github.com/tensorflow/tensorflow.git
 TENSORFLOW_VER=v1.4.0-rc1
-
-TENSORFLOW_BUILT=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.0rc1-cp35-cp35m-linux_x86_64.whl
+# edit: changed wheel tag for tensorflow from '-cp35-cp35m-' to ''-cp36-cp36m-''
+# this means that the wheel version built on this pc, did not support python 3.5
+# this was done to resolve " ERROR: tensorflow-1.4.0rc1-cp35-cp35m-linux_x86_64.whl is not a supported wheel on this platform."
+TENSORFLOW_BUILT=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.0rc1-cp36-cp36m-linux_x86_64.whl
 
 BAZEL_INSTALLER=https://github.com/bazelbuild/bazel/releases/download/0.5.4/bazel-0.5.4-installer-linux-x86_64.sh
 
